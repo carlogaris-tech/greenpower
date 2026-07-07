@@ -335,6 +335,13 @@ h2 {
   margin-bottom: 12px;
 }
 
+.chart-detail {
+  margin: 8px 0 0;
+  color: rgba(247, 251, 255, 0.68);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .field-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -475,6 +482,21 @@ canvas {
   margin: 0;
   color: rgba(247, 251, 255, 0.82);
   line-height: 1.65;
+}
+
+.future-panel {
+  margin-top: 4px;
+  border-color: rgba(143, 212, 0, 0.28);
+  background:
+    linear-gradient(135deg, rgba(143, 212, 0, 0.1), rgba(32, 214, 197, 0.05)),
+    rgba(17, 29, 45, 0.92);
+}
+
+.future-panel p:not(.eyebrow) {
+  max-width: 980px;
+  margin: 0;
+  color: rgba(247, 251, 255, 0.82);
+  line-height: 1.7;
 }
 
 @media (max-width: 1040px) {
