@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mercatino | Pannello impatto riuso</title>
+    <meta
+      name="description"
+      content="Demo dashboard Mercatino per stimare l'impatto ambientale del riuso nei mercatini dell'usato."
+    >
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./data.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Navigazione riuso impact hub">
+        <a class="brand" href="../">
+          <span class="brand-mark">M</span>
+          <span>
+            <strong>Mercatino</strong>
+            <small>Riuso impact hub</small>
+          </span>
+        </a>
+
+        <nav>
+          <a class="is-active" href="#selezione">Selezione</a>
+          <a href="#impatto">Impatto</a>
+          <a href="#grafici">Grafici</a>
+          <a href="#ai">Stima AI</a>
+        </nav>
+
+        <div class="side-note">
+          <span class="avatar">R</span>
+          <div>
+            <strong>Demo ambientale</strong>
+            <small>Dati negozi da Excel, valori impatto demo</small>
+          </div>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Economia circolare</p>
+            <h1>
+              Pannello impatto riuso
+              <span class="version-badge">demo v0.1</span>
+            </h1>
+          </div>
+          <a class="ghost-button" href="../">Torna all'indice</a>
+        </header>
+
+        <section class="hero" aria-label="Riuso e seconda vita dei prodotti">
+          <img src="./reuse-header.png" alt="">
+          <div class="hero-copy">
+            <p class="eyebrow">Seconda vita agli oggetti</p>
+            <h2>Quanto valore ambientale genera un mercatino dell'usato?</h2>
+            <p>
+              Seleziona area e negozio per presentare una stima demo di oggetti
+              venduti, energia risparmiata e CO2 evitata grazie al riuso.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel filters-panel" id="selezione">
+          <div class="panel-heading">
+            <p class="eyebrow">Filtri</p>
+            <h2>Seleziona mercatino</h2>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Regione
+              <select id="regionSelect"></select>
+            </label>
+            <label>
+              Provincia
+              <select id="provinceSelect"></select>
+            </label>
+            <label>
+              Mercatino
+              <select id="marketSelect"></select>
+            </label>
+          </div>
+        </section>
+
+        <section class="kpi-grid" id="impatto" aria-label="Indicatori di impatto">
+          <article class="metric-card">
+            <span>Oggetti venduti</span>
+            <strong id="itemsSold">0</strong>
+            <div class="progress-track" aria-hidden="true">
+              <span class="progress-fill" id="itemsProgress"></span>
+            </div>
+            <small>prodotti riutilizzati nel periodo demo</small>
+          </article>
+          <article class="metric-card energy">
+            <span>Energia risparmiata</span>
+            <strong><span id="kwhSaved">0</span> kWh</strong>
+            <div class="progress-track" aria-hidden="true">
+              <span class="progress-fill" id="kwhProgress"></span>
+            </div>
+            <small id="homeDays">equivalente uso domestico</small>
+          </article>
+          <article class="metric-card carbon">
+            <span>CO2 evitata</span>
+            <strong><span id="co2Saved">0</span> kg</strong>
+            <div class="progress-track" aria-hidden="true">
+              <span class="progress-fill" id="co2Progress"></span>
+            </div>
+            <small id="treesEquivalent">alberi equivalenti</small>
+          </article>
+          <article class="metric-card reuse">
+            <span>Tasso riuso stimato</span>
+            <strong><span id="reuseRate">0</span>%</strong>
+            <div class="progress-track" aria-hidden="true">
+              <span class="progress-fill" id="reuseProgress"></span>
+            </div>
+            <small>quota prodotti con seconda vita</small>
+          </article>
+        </section>
+
+        <section class="content-grid" id="grafici">
+          <article class="panel chart-panel">
+            <div class="panel-heading compact">
+              <p class="eyebrow">Categorie</p>
+              <h2>Energia risparmiata per tipologia</h2>
+            </div>
+            <canvas id="categoryChart" width="760" height="360" aria-label="Grafico a barre per categoria"></canvas>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading compact">
+              <p class="eyebrow">Provincia</p>
+              <h2>Confronto mercatini selezionati</h2>
+            </div>
+            <canvas id="provinceChart" width="760" height="360" aria-label="Grafico a barre per provincia"></canvas>
+          </article>
+        </section>
+
+        <section class="content-grid summary-grid">
+          <article class="panel store-panel">
+            <div class="panel-heading compact">
+              <p class="eyebrow">Scheda negozio</p>
+              <h2 id="storeName">Mercatino</h2>
+            </div>
+            <dl class="store-details">
+              <div>
+                <dt>Citta</dt>
+                <dd id="storeCity">-</dd>
+              </div>
+              <div>
+                <dt>Indirizzo</dt>
+                <dd id="storeAddress">-</dd>
+              </div>
+              <div>
+                <dt>Tipologia</dt>
+                <dd id="storeType">-</dd>
+              </div>
+              <div>
+                <dt>Superficie</dt>
+                <dd id="storeSqm">-</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="panel ai-panel" id="ai">
+            <div class="panel-heading compact">
+              <p class="eyebrow">AI demo</p>
+              <h2>Stima narrativa di impatto</h2>
+            </div>
+            <p id="aiInsight">
+              Seleziona un mercatino per generare una lettura sintetica del
+              risparmio ambientale stimato.
+            </p>
+            <button class="primary-button" id="generateInsight" type="button">
+              Aggiorna stima AI
+            </button>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
