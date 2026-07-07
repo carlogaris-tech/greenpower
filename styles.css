@@ -73,16 +73,13 @@ a {
   gap: 12px;
 }
 
-.brand-mark {
-  width: 46px;
-  height: 46px;
-  display: inline-grid;
-  place-items: center;
+.brand-logo {
+  width: 74px;
+  height: 48px;
+  object-fit: contain;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--teal), var(--green));
-  color: #07111f;
-  font-size: 1.35rem;
-  font-weight: 900;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 5px;
   box-shadow: 0 10px 28px rgba(143, 212, 0, 0.22);
 }
 
