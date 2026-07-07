@@ -16,6 +16,7 @@ const fields = {
   kwhProgress: document.querySelector("#kwhProgress"),
   co2Progress: document.querySelector("#co2Progress"),
   reuseProgress: document.querySelector("#reuseProgress"),
+  provinceChartDetail: document.querySelector("#provinceChartDetail"),
   storeName: document.querySelector("#storeName"),
   storeCity: document.querySelector("#storeCity"),
   storeAddress: document.querySelector("#storeAddress"),
@@ -169,7 +170,10 @@ function drawBarChart(canvas, rows, options = {}) {
     ctx.fillStyle = "#f7fbff";
     ctx.font = `${12 * ratio}px Inter, system-ui, sans-serif`;
     ctx.textAlign = "center";
-    ctx.fillText(formatNumber(row.value), x + barWidth / 2, y - 8 * ratio);
+    const valueLabel = options.valueSuffix
+      ? `${formatNumber(row.value)} ${options.valueSuffix}`
+      : formatNumber(row.value);
+    ctx.fillText(valueLabel, x + barWidth / 2, y - 8 * ratio);
 
     ctx.save();
     ctx.translate(x + barWidth / 2, padding.top + innerHeight + 14 * ratio);
@@ -228,6 +232,7 @@ function render() {
     market.treesEquivalent
   )} alberi equivalenti in un anno`;
   fields.reuseRate.textContent = formatNumber(market.reuseRate);
+  fields.provinceChartDetail.textContent = `Confronto dei mercatini in provincia di ${market.province} per kWh risparmiati stimati.`;
   animateProgress(fields.itemsProgress, progressPercent(market.itemsSold, maxImpact.itemsSold));
   animateProgress(fields.kwhProgress, progressPercent(market.kwhSaved, maxImpact.kwhSaved));
   animateProgress(fields.co2Progress, progressPercent(market.co2Saved, maxImpact.co2Saved));
@@ -239,8 +244,8 @@ function render() {
   fields.storeSqm.textContent = market.sqm ? `${formatNumber(market.sqm)} mq` : "Non indicata";
   fields.aiInsight.textContent = insightFor(market);
 
-  drawBarChart(categoryChart, categoryRows(market));
-  drawBarChart(provinceChart, provinceRows(), { rotateLabels: true });
+  drawBarChart(categoryChart, categoryRows(market), { valueSuffix: "kWh" });
+  drawBarChart(provinceChart, provinceRows(), { rotateLabels: true, valueSuffix: "kWh" });
 }
 
 function handleRegionChange() {
