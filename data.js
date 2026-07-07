@@ -83,16 +83,16 @@ const reuseMarkets = [
     "sqm": 500,
     "storeType": "Generalista",
     "itemsSold": 132,
-    "kwhSaved": 2016,
-    "co2Saved": 514,
-    "treesEquivalent": 24,
+    "kwhSaved": 2393,
+    "co2Saved": 610,
+    "treesEquivalent": 29,
     "reuseRate": 73,
     "categories": {
       "Arredo": 35,
-      "Elettronica": 18,
-      "Moda": 37,
+      "Elettronica": 28,
+      "Moda": 36,
       "Casa": 29,
-      "Libri e giochi": 13
+      "Libri e giochi": 4
     }
   },
   {
