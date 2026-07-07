@@ -129,16 +129,23 @@
             <div class="panel-heading compact">
               <p class="eyebrow">Categorie</p>
               <h2>Energia risparmiata per tipologia</h2>
+              <p class="chart-detail">
+                Ogni valore del grafico e espresso in kWh risparmiati stimati.
+              </p>
             </div>
-            <canvas id="categoryChart" width="760" height="360" aria-label="Grafico a barre per categoria"></canvas>
+            <canvas id="categoryChart" width="760" height="360" aria-label="Grafico a barre dei kWh risparmiati per categoria"></canvas>
           </article>
 
           <article class="panel chart-panel">
             <div class="panel-heading compact">
               <p class="eyebrow">Provincia</p>
               <h2>Confronto mercatini selezionati</h2>
+              <p class="chart-detail" id="provinceChartDetail">
+                Confronto dei mercatini della provincia selezionata per kWh
+                risparmiati stimati.
+              </p>
             </div>
-            <canvas id="provinceChart" width="760" height="360" aria-label="Grafico a barre per provincia"></canvas>
+            <canvas id="provinceChart" width="760" height="360" aria-label="Grafico a barre dei kWh risparmiati per mercatino nella provincia"></canvas>
           </article>
         </section>
 
