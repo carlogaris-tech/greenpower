@@ -131,8 +131,9 @@ function resizeCanvas(canvas) {
 
 function drawBarChart(canvas, rows, options = {}) {
   const { ctx, width, height, ratio } = resizeCanvas(canvas);
+  const valueFontSize = options.valueSuffix ? 10 : 12;
   const padding = {
-    top: 24 * ratio,
+    top: (options.valueSuffix ? 34 : 24) * ratio,
     right: 18 * ratio,
     bottom: 58 * ratio,
     left: 58 * ratio,
@@ -168,8 +169,9 @@ function drawBarChart(canvas, rows, options = {}) {
     ctx.fillRect(x, y, barWidth, barHeight);
 
     ctx.fillStyle = "#f7fbff";
-    ctx.font = `${12 * ratio}px Inter, system-ui, sans-serif`;
+    ctx.font = `${valueFontSize * ratio}px Inter, system-ui, sans-serif`;
     ctx.textAlign = "center";
+    ctx.textBaseline = "alphabetic";
     const valueLabel = options.valueSuffix
       ? `${formatNumber(row.value)} ${options.valueSuffix}`
       : formatNumber(row.value);
